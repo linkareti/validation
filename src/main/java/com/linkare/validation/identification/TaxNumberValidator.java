@@ -68,7 +68,7 @@ public final class TaxNumberValidator {
      * @return
      */
     private static boolean isValidPtIdCard(final String number) {
-	if (StringUtils.isBlank(number) || !NumberUtils.isNumber(number)) {
+	if (StringUtils.isBlank(number) || !NumberUtils.isDigits(number)) {
 	    return false;
 	}
 	final String paddedNumber = StringUtils.leftPad(number, ID_CARD_NUMBER_LENGTH, PADDING_CHAR);
