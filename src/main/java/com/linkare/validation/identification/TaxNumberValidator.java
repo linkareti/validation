@@ -5,8 +5,6 @@ import java.util.Locale;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 
-import com.linkare.validation.identification.IdentificationCardNumberValidator.IdentificationCardCountry;
-
 /**
  * 
  * @author Paulo Zenida - Linkare TI
