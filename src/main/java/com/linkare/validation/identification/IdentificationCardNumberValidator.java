@@ -72,7 +72,7 @@ public final class IdentificationCardNumberValidator {
 	    return false;
 	}
 	final String paddedNumber = StringUtils.leftPad(number, ID_CARD_NUMBER_LENGTH, PADDING_CHAR);
-	if (paddedNumber.length() > 9) {
+	if (paddedNumber.length() > ID_CARD_NUMBER_LENGTH) {
 	    return false;
 	}
 	final char[] numbers = paddedNumber.toCharArray();
