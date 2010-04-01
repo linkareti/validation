@@ -175,7 +175,7 @@ public final class IdentificationCardNumberValidator {
 	return score == MAXIMUM_SCORE;
     }
 
-    public static final boolean isError(final int score) {
+    public static boolean isError(final int score) {
 	return score == MINIMUM_SCORE;
     }
 
