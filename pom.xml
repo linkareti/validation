@@ -5,20 +5,18 @@
 	<artifactId>validation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>com.linkare.validation</name>
-	<distributionManagement>
-		<!-- use the following if you're not using a snapshot version. -->
+	<repositories>
 		<repository>
 			<id>public-repo</id>
 			<name>Linkare public repository</name>
-			<url>https://nexus.linkare.com/content/groups/public/</url>
+			<url>http://nexus.linkare.com/content/repositories/releases/</url>
 		</repository>
-		<!-- use the following if you ARE using a snapshot version. -->
-		<snapshotRepository>
+		<repository>
 			<id>snap-repo</id>
 			<name>Linkare public snapshot repository</name>
-			<url>https://nexus.linkare.com/content/groups/public-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+			<url>http://nexus.linkare.com/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
 	<dependencyManagement>
 		<dependencies>
 		</dependencies>
