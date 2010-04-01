@@ -17,6 +17,20 @@
 			<url>http://nexus.linkare.com/content/repositories/snapshots/</url>
 		</repository>
 	</repositories>
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>public-repo</id>
+			<name>Linkare public repository</name>
+			<url>http://nexus.linkare.com/content/repositories/releases/</url>
+		</repository>
+		<!-- use the following if you ARE using a snapshot version. -->
+		<snapshotRepository>
+			<id>snap-repo</id>
+			<name>Linkare public snapshot repository</name>
+			<url>http://nexus.linkare.com/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<dependencyManagement>
 		<dependencies>
 		</dependencies>
