@@ -1,61 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>linkare-parent</artifactId>
+		<groupId>com.linkare</groupId>
+		<version>1.0.0</version>
+	</parent>
 	<groupId>com.linkare</groupId>
 	<artifactId>validation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>com.linkare.validation</name>
-	<repositories>
-		<repository>
-			<id>public-repo</id>
-			<name>Linkare public repository</name>
-			<url>http://nexus.linkare.com/content/repositories/releases/</url>
-		</repository>
-		<repository>
-			<id>snap-repo</id>
-			<name>Linkare public snapshot repository</name>
-			<url>http://nexus.linkare.com/content/repositories/snapshots/</url>
-		</repository>
-	</repositories>
-	<distributionManagement>
-		<!-- use the following if you're not using a snapshot version. -->
-		<repository>
-			<id>public-repo</id>
-			<name>Linkare public repository</name>
-			<url>http://nexus.linkare.com/content/repositories/releases/</url>
-		</repository>
-		<!-- use the following if you ARE using a snapshot version. -->
-		<snapshotRepository>
-			<id>snap-repo</id>
-			<name>Linkare public snapshot repository</name>
-			<url>http://nexus.linkare.com/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<dependencyManagement>
-		<dependencies>
-		</dependencies>
-	</dependencyManagement>
+	<url>https://xwiki.linkare.com/internal/com.linkare.validation</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<description>Project containing utility classes to perform common known validations.</description>
-	<url>https://xwiki.linkare.com/internal/com.linkare.validation</url>
-	<issueManagement>
-		<system>Bugzilla</system>
-		<url>https://bugzilla.linkare.com</url>
-	</issueManagement>
-	<ciManagement>
-		<system>Hudson</system>
-		<url>https://hudson.linkare.com</url>
-	</ciManagement>
 	<inceptionYear>2010</inceptionYear>
 	<scm>
 		<url>https://svn.linkare.com/internal/common/com.linkare.validation/trunk</url>
 	</scm>
-	<organization>
-		<name>Linkare TI</name>
-		<url>http://www.linkare.com</url>
-	</organization>
 	<build>
 		<plugins>
 			<plugin>
