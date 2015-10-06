@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>linkare-parent</artifactId>
-		<groupId>com.linkare</groupId>
-		<version>1.0.0</version>
+		<artifactId>parent</artifactId>
+		<groupId>com.linkare.maven</groupId>
+		<version>1.0.1</version>
 	</parent>
 	<groupId>com.linkare</groupId>
 	<artifactId>validation</artifactId>
@@ -16,9 +16,9 @@
 	<description>Project containing utility classes to perform common known validations.</description>
 	<inceptionYear>2010</inceptionYear>
 	<scm>
-                <connection>scm:svn:https://svn.linkare.com/internal/commons/com.linkare.validation/trunk</connection>
-                <developerConnection>scm:svn:https://svn.linkare.com/internal/commons/com.linkare.validation/trunk</developerConnection>
-                <url>https://svn.linkare.com/internal/commons/com.linkare.validation/trunk</url>
+                <connection>scm:svn:https://svn.linkare.com/internal/commons/com.linkare.validation/branches/rel-1.1.x</connection>
+                <developerConnection>scm:svn:https://svn.linkare.com/internal/commons/com.linkare.validation/branches/rel-1.1.x</developerConnection>
+                <url>https://svn.linkare.com/internal/commons/com.linkare.validation/branches/rel-1.1.x</url>
 	</scm>
 	<build>
 		<plugins>
