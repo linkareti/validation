@@ -12,6 +12,8 @@ import org.apache.commons.lang.math.NumberUtils;
  */
 public final class TaxNumberValidator {
 
+    private static final int MINIMUM_REMAINING = 2;
+
     private static final int DIVISION_FACTOR = 11;
 
     private static final char PADDING_CHAR = '0';
@@ -68,20 +70,36 @@ public final class TaxNumberValidator {
      * @return
      */
     private static boolean isValidPtIdCard(final String number) {
+	// 1. Validate size (9 digits)
 	if (StringUtils.isBlank(number) || !NumberUtils.isDigits(number)) {
 	    return false;
 	}
 	final String paddedNumber = StringUtils.leftPad(number, ID_CARD_NUMBER_LENGTH, PADDING_CHAR);
-	if (paddedNumber.length() > ID_CARD_NUMBER_LENGTH) {
+	if (paddedNumber.length() != ID_CARD_NUMBER_LENGTH) {
 	    return false;
 	}
+
+	// 2. First digit must be one of 1, 2, 5, 6, 7, 8 ou 9
+	if (!paddedNumber.startsWith("1") && !paddedNumber.startsWith("2") && !paddedNumber.startsWith("5") && !paddedNumber.startsWith("6")
+		&& !paddedNumber.startsWith("7") && !paddedNumber.startsWith("8") && !paddedNumber.startsWith("9")) {
+	    return false;
+	}
+
+	// 3. Control sum is calculated with the formula 9xd1 + 8xd2 + 7xd3 + 6xd4 + 5xd5 + 4xd6 + 3xd7 + 2xd8
 	final char[] numbers = paddedNumber.toCharArray();
 	int result = 0;
-	int multiplier = 1;
-	for (int i = (numbers.length - 1); i >= 0; i--) {
+	int multiplier = ID_CARD_NUMBER_LENGTH;
+	for (int i = 0; i < (numbers.length - 1); i++) {
 	    int n = Integer.valueOf(String.valueOf(numbers[i]));
-	    result += (n * multiplier++);
+	    result += (n * multiplier--);
 	}
-	return (result % DIVISION_FACTOR) == 0;
+	// 4. We calculate the remainder by 11
+	int remaining = (result % DIVISION_FACTOR);
+
+	// 5. If the remaining is below 0, the check digit is 0. Otherwise, is 11 subtracted by the remaining
+	int checkDigit = (remaining < MINIMUM_REMAINING) ? 0 : (DIVISION_FACTOR - remaining);
+	
+	// 6. If the checkDigit matches the number's last digit, it is valid. Otherwise, it is not
+	return checkDigit == Integer.valueOf(String.valueOf(numbers[ID_CARD_NUMBER_LENGTH - 1]));
     }
 }
