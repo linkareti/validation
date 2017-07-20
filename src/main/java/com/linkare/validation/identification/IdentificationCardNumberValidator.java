@@ -97,7 +97,7 @@ public final class IdentificationCardNumberValidator {
      * 
      * @param number
      * 
-     @return returns the <code>score</code> for the passed in <code>number</code> for the <code>DEFAULT_ID_CARD_COUNTRY</code> (PT). The score represents the
+     * @return returns the <code>score</code> for the passed in <code>number</code> for the <code>DEFAULT_ID_CARD_COUNTRY</code> (PT). The score represents the
      *         number of successfully evaluated rules the <code>number</code> has been submitted to.
      * 
      * @see IdentificationCardNumberValidator#scoreIdCard(Locale, String)
@@ -241,13 +241,22 @@ public final class IdentificationCardNumberValidator {
      * @return 1 if the <code>number</code>'s check digit is ok. It returns 0 otherwise.
      */
     private static int scoreCheckDigit(final String number) {
+	final String numberWithoutCheckDigit = number.substring(0, number.length() - 1);
+	final int scoreDigit = Integer.valueOf(String.valueOf(number.charAt(number.length() - 1)));
+	return scoreDigit == calculateCheckDigit(numberWithoutCheckDigit) ? 1 : 0;
+    }
+
+    private static int calculateCheckDigit(final String number) {
 	final char[] numbers = number.toCharArray();
 	int result = 0;
-	int multiplier = 1;
+	int multiplier = 2;
 	for (int i = (numbers.length - 1); i >= 0; i--) {
 	    int n = Integer.valueOf(String.valueOf(numbers[i]));
 	    result += (n * multiplier++);
 	}
-	return (result % DIVISION_FACTOR) == 0 ? 1 : 0;
+	int divisionByEleven = (int) Math.ceil((double) result / DIVISION_FACTOR);
+	int multiplication = divisionByEleven * DIVISION_FACTOR;
+	int finalResult = multiplication - result;
+	return finalResult > 9 ? 0 : finalResult;
     }
 }
