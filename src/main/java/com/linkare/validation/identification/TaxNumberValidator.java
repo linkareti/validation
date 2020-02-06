@@ -1,5 +1,7 @@
 package com.linkare.validation.identification;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.lang.StringUtils;
@@ -25,6 +27,8 @@ public final class TaxNumberValidator {
     private static final String DEFAULT_COUNTRY = "PT";
 
     private static final Locale DEFAULT_ID_CARD_COUNTRY = new Locale(DEFAULT_LANGUAGE, DEFAULT_COUNTRY);
+    
+    private static final List<String> POSSIBLE_INITIAL_NUMBERS =  Arrays.asList("1","2","3","5","6","7","8","9");
 
     private TaxNumberValidator() {
     }
@@ -79,9 +83,10 @@ public final class TaxNumberValidator {
 	    return false;
 	}
 
-	// 2. First digit must be one of 1, 2, 5, 6, 7, 8 ou 9
-	if (!paddedNumber.startsWith("1") && !paddedNumber.startsWith("2") && !paddedNumber.startsWith("5") && !paddedNumber.startsWith("6")
-		&& !paddedNumber.startsWith("7") && !paddedNumber.startsWith("8") && !paddedNumber.startsWith("9")) {
+	// 2. First digit must be one of 1, 2,3, 5, 6, 7, 8 or 9
+	String firstChar =  "" + paddedNumber.charAt(0);
+	
+	if (!POSSIBLE_INITIAL_NUMBERS.contains(firstChar)) {
 	    return false;
 	}
 
@@ -90,7 +95,7 @@ public final class TaxNumberValidator {
 	int result = 0;
 	int multiplier = ID_CARD_NUMBER_LENGTH;
 	for (int i = 0; i < (numbers.length - 1); i++) {
-	    int n = Integer.valueOf(String.valueOf(numbers[i]));
+	    int n = Integer.parseInt(String.valueOf(numbers[i]));
 	    result += (n * multiplier--);
 	}
 	// 4. We calculate the remainder by 11
