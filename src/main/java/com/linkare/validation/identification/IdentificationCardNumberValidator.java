@@ -53,7 +53,7 @@ public final class IdentificationCardNumberValidator {
      *            the identification card number to be validated
      * @return true if the <code>number</code> is valid for the <code>DEFAULT_ID_CARD_COUNTRY</code> (PT). It returns false otherwise.
      * 
-     * @see IdentificationCardNumberValidator#isValid(IdentificationCardCountry, String)
+     * @see IdentificationCardNumberValidator#isValid(Locale, String)
      */
     public static boolean isValid(final String number) {
 	return isValid(DEFAULT_ID_CARD_COUNTRY, number);
@@ -95,7 +95,7 @@ public final class IdentificationCardNumberValidator {
 
     /**
      * 
-     * @param number
+     * @param number the number to be scored
      * 
      * @return returns the <code>score</code> for the passed in <code>number</code> for the <code>DEFAULT_ID_CARD_COUNTRY</code> (PT). The score represents the
      *         number of successfully evaluated rules the <code>number</code> has been submitted to.
@@ -118,7 +118,7 @@ public final class IdentificationCardNumberValidator {
      * 
      *         The returned <code>score</code> values are:
      * 
-     *         <table width="90%">
+     *         <table style="width: 90%;" summary="">
      *         <tr>
      *         <th>SCORE</th>
      *         <th>VALUE</th>
@@ -147,7 +147,7 @@ public final class IdentificationCardNumberValidator {
      *         <tr>
      *         <td>MAXIMUM_SCORE</td>
      *         <td>4</td>
-     *         <th>MAXIMUM_SCORE_MESSAGE</td>
+     *         <td>MAXIMUM_SCORE_MESSAGE</td>
      *         </tr>
      *         </table>
      * 

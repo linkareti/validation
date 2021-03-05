@@ -35,7 +35,7 @@ public final class TaxNumberValidator {
      *            the identification card number to be validated
      * @return true if the <code>number</code> is valid for the <code>DEFAULT_ID_CARD_COUNTRY</code> (PT). It returns false otherwise.
      * 
-     * @see TaxNumberValidator#isValid(IdentificationCardCountry, String)
+     * @see TaxNumberValidator#isValid(Locale, String)
      */
     public static boolean isValid(final String number) {
 	return isValid(DEFAULT_ID_CARD_COUNTRY, number);
